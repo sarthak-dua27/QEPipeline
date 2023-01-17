@@ -8,7 +8,7 @@ import com.couchbase.client.java.json.JsonObject;
 import com.couchbase.client.java.kv.MutationResult;
 
 def call(Map config = [:] Map){
-  println("Hi")
+  sh "echo Hello World"
   Cluster cluster = Cluster.connect("couchbases://" + config.connectstring, config.username as String, config.password as String);
   Bucket bucket = cluster.bucket("qe24_status");
   bucket.waitUntilReady(Duration.ofSeconds(120));
