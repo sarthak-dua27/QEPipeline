@@ -8,6 +8,7 @@ import com.couchbase.client.java.json.JsonObject;
 import com.couchbase.client.java.kv.MutationResult;
 
 def call(Map config = [:] Map){
+  println("Hi")
   Cluster cluster = Cluster.connect("couchbases://" + config.connectstring, config.username as String, config.password as String);
   Bucket bucket = cluster.bucket("qe24_status");
   bucket.waitUntilReady(Duration.ofSeconds(120));
@@ -16,7 +17,7 @@ def call(Map config = [:] Map){
 
   if(config.actions=="checkname"){
     try{
-      result = collection.get(self.name)
+      result = collection.get(config.name as String)
       println("Found")
       return true
     }catch (Exception ex){
