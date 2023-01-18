@@ -7,8 +7,8 @@ pipeline {
   stages {
     stage('stage 1') {
       steps {
-        mvn --version
-        mvn clean install
+        sh 'mvn --version'
+        sh 'mvn clean install'
         helloWorld()
       }
     }
