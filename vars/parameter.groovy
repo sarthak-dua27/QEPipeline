@@ -9,7 +9,7 @@ pipeline {
       steps {
         sh 'mvn --version'
         sh 'mvn clean install'
-        helloWorld(username:"sarthak", password:"Password@123",connectstring:"cb.wey5oeokxs3xxgrd.cloud.couchbase.com",name:"pipe")
+        helloWorld(new Config(username:"sarthak", password:"Password@123",connectstring:"cb.wey5oeokxs3xxgrd.cloud.couchbase.com",name:"pipe"))
       }
     }
   }
