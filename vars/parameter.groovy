@@ -1,7 +1,11 @@
-// def call(String name, String dow){
-//   sh "echo ${name} ____ ${dow}"  
-// }
-
-def call(Map config = [:]){
-  sh "echo ${config.name} ____ ${config.dow}"  
+@Library('shared-library') _
+pipeline {
+  agent any
+  stages {
+    stage('stage 1') {
+      steps {
+        helloWorld()
+      }
+    }
+  }
 }
