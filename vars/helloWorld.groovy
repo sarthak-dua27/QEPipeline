@@ -38,7 +38,7 @@ def call(String username, String password, String connectstring, String name, St
     }
   }else if(actions=="update_latest"){
     try{
-      statement = "select AMI from `qe24_status` where" + env + "latest= TRUE and" +  env ".PIPELINE_STATUS=SUCCESS"
+      statement = "select AMI from `qe24_status` where" + env + "latest= TRUE and" +  env + ".PIPELINE_STATUS=SUCCESS"
       QueryResult result = cluster.query(statement);
 
       for (JsonObject row : result.rowsAsObject()) {
