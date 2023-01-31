@@ -9,8 +9,9 @@
 //import java.time.Duration;
 //import com.couchbase.client.java.*;
 
-@Grab('com.couchbase.client.java.*')
+@Grab('com.couchbase.client*')
 @Grab('java.time.Duration')
+import com.couchbase.client.java.*;
 
 def call(String username, String password, String connectstring, String name, String actions){
   sh "echo Hello World"
