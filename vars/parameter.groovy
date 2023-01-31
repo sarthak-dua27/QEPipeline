@@ -1,9 +1,6 @@
-@Library('shared-library') _
+@Library('cb-bucket-update') _
 pipeline {
-  agent { label 'centos-slave' }
-  tools{
-    maven 'maven'
-  }
+  agent any
   stages {
     stage('stage 1') {
       steps {
