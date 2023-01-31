@@ -6,9 +6,11 @@
 //import com.couchbase.client.java.Scope;
 //import com.couchbase.client.java.json.JsonObject;
 //import com.couchbase.client.java.kv.MutationResult;
-import java.time.Duration;
-import com.couchbase.client.java.*;
+//import java.time.Duration;
+//import com.couchbase.client.java.*;
 
+@Grab('com.couchbase.client.java.*')
+@Grab('java.time.Duration')
 
 def call(String username, String password, String connectstring, String name, String actions){
   sh "echo Hello World"
