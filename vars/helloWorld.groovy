@@ -16,6 +16,9 @@ import com.couchbase.client.java.Collection;
 import com.couchbase.client.java.Scope;
 import com.couchbase.client.java.json.JsonObject;
 import com.couchbase.client.java.kv.MutationResult;
+import com.couchbase.client.java.query.QueryResult;
+import java.time.Duration;
+
 def call(String username, String password, String connectstring, String name, String actions){
   sh "echo Hello World"
   Cluster cluster = Cluster.connect("couchbases://" + connectstring, username, password);
