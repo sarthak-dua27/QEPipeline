@@ -7,7 +7,7 @@
 //import com.couchbase.client.java.json.JsonObject;
 //import com.couchbase.client.java.kv.MutationResult;
 import java.time.Duration;
-import com.couchbase.client.*;
+import com.couchbase.client.java.*;
 
 
 def call(String username, String password, String connectstring, String name, String actions){
