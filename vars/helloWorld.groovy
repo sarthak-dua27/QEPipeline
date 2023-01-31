@@ -1,11 +1,11 @@
-//import static com.couchbase.client.java.kv.MutateInSpec.insert;
-//import java.time.Duration;
-//import com.couchbase.client.java.Bucket;
-//import com.couchbase.client.java.Cluster;
-//import com.couchbase.client.java.Collection;
-//import com.couchbase.client.java.Scope;
-//import com.couchbase.client.java.json.JsonObject;
-//import com.couchbase.client.java.kv.MutationResult;
+import static com.couchbase.client.java.kv.MutateInSpec.insert;
+import java.time.Duration;
+import com.couchbase.client.java.Bucket;
+import com.couchbase.client.java.Cluster;
+import com.couchbase.client.java.Collection;
+import com.couchbase.client.java.Scope;
+import com.couchbase.client.java.json.JsonObject;
+import com.couchbase.client.java.kv.MutationResult;
 
 def call(){
   sh "echo hello world"
