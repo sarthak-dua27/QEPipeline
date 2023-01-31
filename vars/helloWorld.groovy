@@ -9,10 +9,13 @@
 //import java.time.Duration;
 //import com.couchbase.client.java.*;
 
-@Grab('com.couchbase.client*')
-@Grab('java.time.Duration')
-import com.couchbase.client.java.*;
-
+@Grab(group='com.couchbase.client', module='java-client', version='3.4.1')
+import com.couchbase.client.java.Bucket;
+import com.couchbase.client.java.Cluster;
+import com.couchbase.client.java.Collection;
+import com.couchbase.client.java.Scope;
+import com.couchbase.client.java.json.JsonObject;
+import com.couchbase.client.java.kv.MutationResult;
 def call(String username, String password, String connectstring, String name, String actions){
   sh "echo Hello World"
   Cluster cluster = Cluster.connect("couchbases://" + connectstring, username, password);
