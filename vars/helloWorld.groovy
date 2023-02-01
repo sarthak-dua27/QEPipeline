@@ -13,14 +13,16 @@ def call(String username, String password, String connectstring, String name, St
   println(username + " x " + password + " x " + connectstring + " x " + name + " x " +actions)
   sh "echo Hello World"
   Cluster cluster = Cluster.connect("couchbases://" + connectstring, username, password);
+  sh 'echo cluster connected'
   Bucket bucket = cluster.bucket("qe24_status_sarthak");
   bucket.waitUntilReady(Duration.ofSeconds(120));
   Scope scope = bucket.scope("_default");
   Collection collection = scope.collection("_default");
 
   if(actions=="checkname"){
+    sh 'echo in checkname $1'
     try{
-      sh 'echo in checkname'
+      sh 'echo in checkname $2'
       result = collection.get(name)
       println("Found")
       return true
