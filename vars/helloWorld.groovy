@@ -20,12 +20,12 @@ def call(String username, String password, String connectstring, String name, St
 
   if(actions=="checkname"){
     try{
-      sh 'echo in checkname'
+      println("in try")
       result = collection.get(name)
       println("Found")
       return true
     }catch (Exception ex){
-      sh 'echo in catch'
+      println("in except")
       JsonObject env = JsonObject.create().put(key , "STARTED").put("latest", false);
       JsonObject content = JsonObject.create().put("AMI", name ).put(env as String, env);
       MutationResult insertResult = collection.insert(name , content);
