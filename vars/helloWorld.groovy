@@ -22,14 +22,14 @@ def call(String username, String password, String connectstring, String name, St
       println("in try")
       result = collection.get(name)
       println("Found")
-//      return "true"
+      return "true"
     } catch (Exception ex) {
       println("in except")
       JsonObject env = JsonObject.create().put(param_key, "STARTED").put("latest", false);
       JsonObject content = JsonObject.create().put("AMI", name).put(env as String, env);
       MutationResult insertResult = collection.insert(name, content);
       println("Doc Created")
-//      return "false"
+      return "false"
     }
   }else if(actions=="update"){
     try{
@@ -40,7 +40,7 @@ def call(String username, String password, String connectstring, String name, St
     }
   }else if(actions=="update_latest"){
     try{
-      statement = "select AMI from `qe24_status` where" + env + "latest= TRUE and" +  env + ".PIPELINE_STATUS=SUCCESS"
+      statement = "select AMI from `qe24_status_sarthak` where" + env + "latest= TRUE and" +  env + ".PIPELINE_STATUS=SUCCESS"
       QueryResult result = cluster.query(statement);
 
       for (JsonObject row : result.rowsAsObject()) {
@@ -54,7 +54,15 @@ def call(String username, String password, String connectstring, String name, St
     return false
 
   }else if(actions=="get_latest_name"){
-    println("")
+    try {
+      statement = "select AMI from `qe24_status_sarthak` where" + env + "latest= TRUE and" + env + ".PIPELINE_STATUS=SUCCESS"
+      QueryResult result = cluster.query(statement);
+      for (int i = 0; i < result.length(); i++) {
+        println(result[i]["AMI"])
+      }
+    }catch(Exception ex){
+      println("Latest cannot be found")
+    }
   }else{
     println("invalid action")
   }
