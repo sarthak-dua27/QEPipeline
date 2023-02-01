@@ -13,7 +13,7 @@ def call(String username, String password, String connectstring, String name, St
   println(username + " x " + password + " x " + connectstring + " x " + name + " x " +actions)
   sh "echo Hello World"
   Cluster cluster = Cluster.connect("couchbases://" + connectstring, username, password);
-  Bucket bucket = cluster.bucket("qe_24_sarthak");
+  Bucket bucket = cluster.bucket("qe24_status_sarthak");
   bucket.waitUntilReady(Duration.ofSeconds(120));
   Scope scope = bucket.scope("_default");
   Collection collection = scope.collection("_default");
