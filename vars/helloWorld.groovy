@@ -9,7 +9,7 @@ import com.couchbase.client.java.kv.MutationResult;
 import com.couchbase.client.java.query.QueryResult;
 import java.time.Duration;
 
-def call(String username, String password, String connectstring, String name, String actions){
+def call(String username, String password, String connectstring, String name, String actions, String key){
   println(username + " x " + password + " x " + connectstring + " x " + name + " x " +actions)
   sh "echo Hello World"
   Cluster cluster = Cluster.connect("couchbases://" + connectstring, username, password);
