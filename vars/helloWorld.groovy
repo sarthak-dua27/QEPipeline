@@ -13,7 +13,7 @@ def call(String username, String password, String connectstring, String name, St
   println(username + " x " + password + " x " + connectstring + " x " + name + " x " +actions)
   sh "echo Hello World"
   Cluster cluster = Cluster.connect("couchbases://" + connectstring, username, password);
-  Bucket bucket = cluster.bucket("qe24_status_sarthak");
+  Bucket bucket = cluster.bucket("qe_24_sarthak");
   bucket.waitUntilReady(Duration.ofSeconds(120));
   Scope scope = bucket.scope("_default");
   Collection collection = scope.collection("_default");
@@ -25,6 +25,7 @@ def call(String username, String password, String connectstring, String name, St
       println("Found")
       return true
     }catch (Exception ex){
+      sh 'echo in catch of checkname'
       JsonObject env = JsonObject.create().put(key , "STARTED").put("latest", false);
       JsonObject content = JsonObject.create().put("AMI", name ).put(env as String, env);
       MutationResult insertResult = collection.insert(name , content);
