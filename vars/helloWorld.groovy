@@ -9,7 +9,7 @@ import com.couchbase.client.java.kv.MutationResult;
 import com.couchbase.client.java.query.QueryResult;
 import java.time.Duration;
 
-def call(String username, String password, String connectstring, String name, String actions, String param_key){
+def call(String username, String password, String connectstring, String name, String actions, String param_key, String param_value){
   println(username + " x " + password + " x " + connectstring + " x " + name + " x " +actions)
   sh "echo Hello World"
   Cluster cluster = Cluster.connect("couchbases://" + connectstring, username, password);
@@ -23,18 +23,18 @@ def call(String username, String password, String connectstring, String name, St
       println("in try")
       result = collection.get(name)
       println("Found")
-      return true
+      return "true"
     }catch (Exception ex){
       println("in except")
       JsonObject env = JsonObject.create().put(param_key , "STARTED").put("latest", false);
       JsonObject content = JsonObject.create().put("AMI", name ).put(env as String, env);
       MutationResult insertResult = collection.insert(name , content);
       println("Doc Created")
-      return False
+      return "false"
     }
   }else if(actions=="update"){
     try{
-      collection.mutateIn("hotel_1368", Collections.singletonList(insert(key , value)));
+      collection.mutateIn("hotel_1368", Collections.singletonList(insert(param_key , param_value)));
       return "Success"
     }catch (Exception ex){
       return "Failed"
