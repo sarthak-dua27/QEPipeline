@@ -28,10 +28,10 @@ def call(String username, String password, String connectstring, String name, St
       return true
     }catch (Exception ex){
       sh 'echo in catch of checkname'
-      JsonObject env = JsonObject.create().put(key , "STARTED").put("latest", false);
-      JsonObject content = JsonObject.create().put("AMI", name ).put(env as String, env);
-      MutationResult insertResult = collection.insert(name , content);
-      println("Doc Created")
+//      JsonObject env = JsonObject.create().put(key , "STARTED").put("latest", false);
+//      JsonObject content = JsonObject.create().put("AMI", name ).put(env as String, env);
+//      MutationResult insertResult = collection.insert(name , content);
+//      println("Doc Created")
       return False
     }
   }else if(actions=="update"){
