@@ -1,12 +1,9 @@
 @Grab(group='com.couchbase.client', module='java-client', version='3.4.1')
-import static com.couchbase.client.java.kv.MutateInSpec.insert;
-import com.couchbase.client.java.Bucket;
-import com.couchbase.client.java.Cluster;
-import com.couchbase.client.java.Collection;
-import com.couchbase.client.java.Scope;
-import com.couchbase.client.java.json.JsonObject;
-import com.couchbase.client.java.kv.MutationResult;
-import com.couchbase.client.java.query.QueryResult;
+import com.couchbase.client.java.*;
+import com.couchbase.client.java.kv.*;
+import com.couchbase.client.java.json.*;
+import com.couchbase.client.java.query.*;
+
 import java.time.Duration;
 
 def call(String username, String password, String connectstring, String name, String actions){
