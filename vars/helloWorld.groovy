@@ -31,5 +31,31 @@ def call(String username, String password, String connectstring, String name, St
       println("Doc Created")
 //      return "false"
     }
+  }else if(actions=="update"){
+    try{
+      collection.mutateIn("hotel_1368", Collections.singletonList(insert(param_key , param_value)));
+      return "Success"
+    }catch (Exception ex){
+      return "Failed"
+    }
+  }else if(actions=="update_latest"){
+    try{
+      statement = "select AMI from `qe24_status` where" + env + "latest= TRUE and" +  env + ".PIPELINE_STATUS=SUCCESS"
+      QueryResult result = cluster.query(statement);
+
+      for (JsonObject row : result.rowsAsObject()) {
+        collection.mutateIn(row.AMI, Collections.singletonList(insert(env+".latest", false)));
+      }
+      collection.mutateIn(row.AMI, Collections.singletonList(insert(env+".latest", true)));
+      return true
+    }catch (Exception ex){
+      print("FALSE")
+    }
+    return false
+
+  }else if(actions=="get_latest_name"){
+    println("")
+  }else{
+    println("invalid action")
   }
 }
