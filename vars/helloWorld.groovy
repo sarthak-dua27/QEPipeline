@@ -1,4 +1,4 @@
-@Grab(group='com.couchbase.client', module='java-client', version='3.4.1')
+@Grab(group='com.couchbase.client', module='java-client', version='3.4.2')
 import com.couchbase.client.java.*;
 import com.couchbase.client.java.kv.*;
 import com.couchbase.client.java.json.*;
