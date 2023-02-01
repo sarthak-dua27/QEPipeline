@@ -14,10 +14,10 @@ def call(String username, String password, String connectstring, String name, St
   sh "echo Hello World"
   Cluster cluster = Cluster.connect("couchbases://" + connectstring, username, password);
   sh 'echo cluster connected'
-//  Bucket bucket = cluster.bucket("qe24_status_sarthak");
-//  bucket.waitUntilReady(Duration.ofSeconds(120));
-//  Scope scope = bucket.scope("_default");
-//  Collection collection = scope.collection("_default");
+  Bucket bucket = cluster.bucket("qe24_status_sarthak");
+  bucket.waitUntilReady(Duration.ofSeconds(120));
+  Scope scope = bucket.scope("_default");
+  Collection collection = scope.collection("_default");
 
   if(actions=="checkname") {
     sh 'echo in checkname $1'
