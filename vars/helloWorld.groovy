@@ -23,14 +23,14 @@ def call(String username, String password, String connectstring, String name, St
       println("in try")
       result = collection.get(name)
       println("Found")
-      return "true"
+//      return "true"
     }catch (Exception ex){
       println("in except")
       JsonObject env = JsonObject.create().put(param_key , "STARTED").put("latest", false);
       JsonObject content = JsonObject.create().put("AMI", name ).put(env as String, env);
       MutationResult insertResult = collection.insert(name , content);
       println("Doc Created")
-      return "false"
+//      return "false"
     }
   }else if(actions=="update"){
     try{
